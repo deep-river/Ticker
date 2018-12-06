@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ticker </title>
+    <script type="text/javascript" src="static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="static/echarts.min.js"></script>
+</head>
+
+<body>
+    <input id="selectall" type="button" value="取消全选" flag="1" style="position:absolute;left:85%;top:9%;"/>
+    <div id="main" style="width:85%;height:660px;"></div>
+    <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("main"));
+    myChart.showLoading();
+
+    $.get('/chart_data').done(function (data) {
+        //var jsdata = eval("(" + data + ")");
+        var jsdata = JSON.parse(data);
+        var legend = [];
+        var temp_array = [];
+        var indicator;
+        var timestd = [];
+        for (var timestr in jsdata.time){
+            var t = new Date(jsdata.time[timestr]);
+            timestd.push(t);
+        }
+
+    for (var primary_key in jsdata.query_order){
+            indicator = jsdata.query_order[primary_key];
+            var timer = 0;
+
+            for(var key in jsdata.value[indicator]){
+                key_pairs = [];
+                tlength = timestd.length;
+                for (var i=0; i<tlength; i++){
+                    var temp_pair = [timestd[i], jsdata.value[indicator][key][i]];
+                    key_pairs.push(temp_pair);
+                }
+                line_label = '(' + indicator + ')' + key;
+                legend.push(line_label);
+                var temp_obj = {
+                    name: line_label,
+                    type: 'line',
+                    symbol: 'circle',
+                    showSymbol: true,
+                    lineStyle: {
+                        normal: {
+                            width: 2.5,
+                        }
+                    },
+                    data: key_pairs
+                }
+                temp_array.push(temp_obj);
+                timer += 1;
+            }
+        }
+
+        var option = {
+            title: {
+                subtext: '过去30天数据',
+                left: 'center',
+                textStyle: {
+                    fontSize: 24
+                },
+                subtextStyle: {
+                    fontSize: 18
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross'
+                },
+                padding: 5,
+                borderWidth: 1
+            },
+            toolbox: {
+                show: true,
+                right: '1%',
+                top: '1%',
+                itemSize: 18,
+                itemGap: 12,
+                feature: {
+                    dataView: {
+                        show: true,
+                        readOnly: false
+                    },
+                    restore: {
+                        show: true
+                    },
+                    magicType: {
+                        show: true,
+                        type: ['line', 'bar']
+                    },
+                    saveAsImage: {
+                        show: true
+                    }
+                }
+            },
+            grid: {
+                bottom: '10%',
+                right: '13%'
+            },
+            dataZoom: [{
+                type: 'slider',
+                show: true,
+                xAxisIndex: [0],
+                height: '4.5%',
+                bottom: 0,
+                filterMode: 'none',
+                start: 85,
+                end: 100,
+            },{
+                type: 'slider',
+                show: true,
+                yAxisIndex: [0],
+                right: '10%',
+                top: '9%',
+                bottom: '11%',
+                filterMode: 'none'
+            },{
+                type: 'inside',
+                xAxisIndex: [0],
+                filterMode: 'none'
+            },{
+                type: 'inside',
+                yAxisIndex: [0],
+                filterMode: 'none'
+            }],
+            legend:{
+                left: 'right',
+                top: '9%',
+                orient: 'vertical',
+                textStyle: {
+                    fontSize:14
+                },
+                data: legend
+            },
+            xAxis:{
+                splitLine:{
+		        	show:false
+		        },
+		        axisLabel:{
+		            fontSize: 13
+		        },
+                type: 'time',
+                data: timestd
+            },
+            yAxis: {
+                type: 'value',
+                name: '金额    单位：元',
+                nameTextStyle: {
+                    fontSize: 18
+                },
+		        axisLabel:{
+		            fontSize: 13
+		        },
+            },
+            series: temp_array,
+        };
+        myChart.hideLoading();
+        myChart.setOption(option);
+
+        var selectArr = myChart.getOption().legend[0].data;
+        $('#selectall').click(function(){
+                var flag = $(this).attr('flag');
+                if(flag == 1){
+                    var val = false;
+                    $(this).attr('flag',0);
+                    $(this).val('全选');
+                }else{
+                    var val = true;
+                    $(this).attr('flag',1);
+                    $(this).val('取消全选');
+                }
+                var obj = {};
+                for(var key in selectArr){
+                    obj[selectArr[key]] = val;
+                }
+                option.legend.selected = obj;
+                myChart.setOption(option);
+        });
+    });
+    </script>
+</body>
+</html>
