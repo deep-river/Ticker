@@ -3,7 +3,7 @@ A web-app that synchronizes data between databases and visualize data using Flas
 A project for my 2018 summer internship. 
 
 执行环境：  
->Python3.6.5  
+Python3.6.5  
 Python包依赖：  
 >Flask  
 >Flask-APScheduler  
