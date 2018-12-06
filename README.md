@@ -2,49 +2,49 @@
 A web-app that synchronizes data between databases and visualize data using Flask + Echars.
 A project for my 2018 summer internship. 
 
-执行环境：
--Python3.6.5 + Flask框架 + Echarts4
--Python包依赖：
-	Flask
-	Flask-APScheduler
-	pymongo
-	SQLAlchemy
+执行环境：  
+Python3.6.5 + Flask框架 + Echarts4  
+Python包依赖：  
+	Flask  
+	Flask-APScheduler  
+	pymongo  
+	SQLAlchemy  
 	
 **************************************************************************
 
-模块说明：
--DBConn.py
-	数据库连接、关闭连接，及增、查操作的封装函数
+模块说明：  
+-DBConn.py  
+	数据库连接、关闭连接，及增、查操作的封装函数  
 	
--DBConn_config.ini
-	源数据库[Oracle]及目标数据库[Mongodb]的连接配置文件
+-DBConn_config.ini  
+	源数据库[Oracle]及目标数据库[Mongodb]的连接配置文件  
 	
--Main.py
-	后端程序入口
-	从目标数据库获取查询语句，然后对源数据库执行查询。查询结果计算后以json格式存入目标数据库[Records]集合。
+-Main.py  
+	后端程序入口  
+	从目标数据库获取查询语句，然后对源数据库执行查询。查询结果计算后以json格式存入目标数据库[Records]集合。  
 	
--QueryMath.py
-	Main.py中所需的计算函数
+-QueryMath.py  
+	Main.py中所需的计算函数  
 	
--SendNotification.py
-	发送提醒邮件模块
+-SendNotification.py  
+	发送提醒邮件模块  
 	
--Notification_config.ini
-	SendNotification.py所需的邮箱账号配置文件
+-Notification_config.ini  
+	SendNotification.py所需的邮箱账号配置文件  
 	
--Ticker-Flask.py
-	前端程序入口
-	处理数据并与前端页面交互
-	定义了路由及api
-	设置了默认每隔一个小时执行一次Main.py中的main_func函数
+-Ticker-Flask.py  
+	前端程序入口  
+	处理数据并与前端页面交互  
+	定义了路由及api  
+	设置了默认每隔一个小时执行一次Main.py中的main_func函数  
 	
--templates/Ticker-view.html
-	前端页面
-	由Ticker-Flask.py渲染
-	定义了Echarts图表的相关配置
+-templates/Ticker-view.html  
+	前端页面  
+	由Ticker-Flask.py渲染  
+	定义了Echarts图表的相关配置  
 	
--static/*
-	前端页面依赖的js文件
+-static/*  
+	前端页面依赖的js文件  
 
 **************************************************************************
 
