@@ -3,18 +3,18 @@ A web-app that synchronizes data between databases and visualize data using Flas
 A project for my 2018 summer internship. 
 
 执行环境：  
-    Python3.6.5 + Flask框架 + Echarts4  
+>>Python3.6.5 + Flask框架 + Echarts4  
 Python包依赖：  
-    Flask  
-    Flask-APScheduler  
-    pymongo  
-    SQLAlchemy  
+>>Flask  
+>>Flask-APScheduler  
+>>pymongo  
+>>SQLAlchemy  
 	
 **************************************************************************
 
 模块说明：  
 -DBConn.py  
-    数据库连接、关闭连接，及增、查操作的封装函数  
+	数据库连接、关闭连接，及增、查操作的封装函数  
 	
 -DBConn_config.ini  
 	源数据库[Oracle]及目标数据库[Mongodb]的连接配置文件  
