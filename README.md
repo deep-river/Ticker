@@ -2,6 +2,8 @@
 A web-app that synchronizes data between databases and visualizes data using Flask + Echars.
 A project for my 2018 summer internship. 
 
+**************************************************************************
+
 Screenshots
 ![screenshot01](https://raw.githubusercontent.com/deep-river/Ticker/master/Screenshots/Ticker%20scr%20shots%20(1).png)
 ![screenshot01](https://raw.githubusercontent.com/deep-river/Ticker/master/Screenshots/Ticker%20scr%20shots%20(2).png)
