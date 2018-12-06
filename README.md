@@ -4,7 +4,8 @@ A project for my 2018 summer internship.
 
 **************************************************************************
 
-Screenshots
+Screenshots of the visualization interface  
+  
 ![screenshot01](https://raw.githubusercontent.com/deep-river/Ticker/master/Screenshots/Ticker%20scr%20shots%20(1).png)
 ![screenshot01](https://raw.githubusercontent.com/deep-river/Ticker/master/Screenshots/Ticker%20scr%20shots%20(2).png)
 
