@@ -3,8 +3,8 @@ A web-app that synchronizes data between databases and visualize data using Flas
 A project for my 2018 summer internship. 
 
 执行环境：
-Python3.6.5 + Flask框架 + Echarts4
-Python包依赖：
+-Python3.6.5 + Flask框架 + Echarts4
+-Python包依赖：
 	Flask
 	Flask-APScheduler
 	pymongo
@@ -78,7 +78,7 @@ Mongodb数据存储：
 **************************************************************************
 
 文件配置说明：
--Notification_config.ini中Method字段为加密方法，参考具体邮件服务提供方的POP3/SMTP/IMAP设置页面，支持STARTTLS（如：点融），SSL（如：163，QQ等）两种加密方式
+-Notification_config.ini中Method字段为加密方法，参考具体邮件服务提供方的POP3/SMTP/IMAP设置页面，支持STARTTLS，SSL（如：163，QQ等）两种加密方式
  Content字段为自定义邮件内容，可缺省
 
     163邮箱配置示例：
