@@ -70,19 +70,19 @@ Python包依赖：
 **************************************************************************
 
 API说明：  
-- */api/v1.0/data/<string:query>/all/  
+- */api/v1.0/data/\<string:query\>/all/  
 	以Json格式返回<指定类目>中全部数据查询结果  
 	示例 */api/v1.0/data/A/all/  
 	*/api/v1.0/data/all/all/ 返回全部数据查询结果  
 	地址区分大小写  
 	
-- */api/v1.0/data/<string:query>/<int:numlimit>/  
+- */api/v1.0/data/\<string:query\>/\<int:numlimit\>/  
 	以Json格式返回<指定类目-指定条数>的数据查询结果  
 	示例 */api/v1.0/data/A/25  
-	*/api/v1.0/data/all/<int:numlimit>/返回<全部类目-指定条数>的数据查询结果  
+	*/api/v1.0/data/all/\<int:numlimit\>/返回<全部类目-指定条数>的数据查询结果  
 	地址区分大小写  
 
-- */api/v1.0/data/<string:datefrom>/<string:dateto>/<string:query>/all/  
+- */api/v1.0/data/\<string:datefrom\>/\<string:dateto\>/\<string:query\>/all/  
     以Json格式返回<指定日期区间内-指定类目>中全部数据查询结果  
     起始日期格式必须为 yyyy-mm-dd，如 2018-10-1、2018-6-6，程序中实际执行时会按该日期的当日00:00:00作为时间戳查询数据库， 即2018-10-1 00:00:00、2018-6-6 00:00:00  
     示例 */api/v1.0/data/2018-7-16/2018-7-19/F/all/  
